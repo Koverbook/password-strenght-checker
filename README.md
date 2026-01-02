@@ -40,7 +40,7 @@ Il permet également de tester rapidement des mots de passe via une interface en
 
 Vous pouvez tester un mot de passe en le passant directement comme argument dans la ligne de commande :
 ```bash
-python strenghtCheck.py --mdp "MonMotDePasse123!"
+python strenghtCheck.py --mdp MonMotDePasse123!
 ```
 
 ### Mode 2 : Saisie sécurisée du mot de passe
@@ -49,6 +49,7 @@ Si vous souhaitez que le mot de passe soit saisi de manière sécurisée (masqu�
 ```bash
 python strenghtCheck.py --secure-mode
 ```
+Saisir le mot de passe.
 Une fois le mot de passe saisi, l'outil affichera la force du mot de passe sur une échelle de 0 à 8.
 
 ### Mode 3 : Tests par défaut
