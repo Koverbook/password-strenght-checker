@@ -6,16 +6,22 @@ def check(mdp) :
         return 0
     set_mdp = set(mdp)
     proportion = len(set_mdp)/taille
+    err_mess=""
 
     # Longueur du mdp
     if taille > 8 :
         score+=2
+    else :
+        err_mess+="-Trop court\n"
 
     # Different charactère
     if proportion >= 0.9 :
         score+=2
     elif proportion >=0.7 :
         score+=1
+        err_mess+="-Quelques répétitions\n"
+    else :
+        err_mess+="-Trop de répétitions\n"
 
     # Compter les types
     for c in mdp :
@@ -31,10 +37,16 @@ def check(mdp) :
     # Scorer les types
     if (lowerCase+upperCase)/taille >= 0.5 :
         score+=1
+    else :
+        err_mess+="-Pas assez de Lettres\n"
     if special/taille >= 0.2 :
         score+=1
+    else :
+        err_mess+="-Pas assez de caractères spéciaux\n"
     if digit/taille >= 0.1 :
         score+=1
+    else :
+        err_mess+="-Pas assez de chiffres\n"
 
     # Correlation des types (low, upp, spé, digit)
     corr = (corrType(mdp) + corrType(mdp, 2) + corrType(mdp, 3))/3
@@ -42,8 +54,11 @@ def check(mdp) :
         score+=1
     elif corr > 0.7 :
         score-=1
+        err_mess+="-Pattern prévisible (Beta)\n"
 
-    return score
+    err_mess = "-Pas d'erreur trouvée\n" if err_mess == "" else err_mess
+
+    return score, err_mess
 
 def corrType(mdp, lag=1):
     def t(c):
@@ -74,17 +89,21 @@ import argparse
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Mesure la force d'un mot de passe, notée sur 8.")
     parser.add_argument("--mdp", type=str, help="Mot de passe à tester")
+    parser.add_argument("--advice", type=str, help="Conseil d'amélioration")
     parser.add_argument("--secure-mode", action="store_true", help="Saisie sécurisée du mot de passe")
 
     args = parser.parse_args()
 
     if args.mdp:
-        print(f"Score pour '{args.mdp}' : {check(args.mdp)} / 8")
+        print(f"Score pour '{args.mdp}' : {check(args.mdp)[0]} / 8")
+
+    elif args.advice :
+        print(f"Conseil d'amélioration :\n{check(args.advice)[1]}")
 
     elif args.secure_mode :
         from getpass import getpass
         mdp = getpass("Entrer le mot de passe en discrétion : ")
-        print(f"Force du mot de passe : {check(mdp)} / 8")
+        print(f" *\n* *\nForce du mot de passe :\n{check(mdp)[0]}/8\n *\n* *\nConseil d'amélioration :\n{check(mdp)[1]}")
 
     else :
         print("--EXEMPLE--")
