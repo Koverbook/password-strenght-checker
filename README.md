@@ -29,41 +29,41 @@ Il permet également de tester rapidement des mots de passe via une interface en
 
 - Python 3.x, git
 - Pip (gestionnaire de paquets Python)
-- Clonez le repository :
+- Cloner le repository :
    ```bash
-   cd Downloads
    git clone https://github.com/KoverbooK/password-strength-checker.git
    cd password-strenght-checker
    ```
 
 ## Exemple
 
-* Test rapide
-```bash
-python strenghtCheck.py --mdp MonMotDePasse123!
-```
-Le mot de passe est passé directement en ligne de commande.
+* Test rapide :
+  ```bash
+  python strenghtCheck.py --mdp MonMotDePasse123!
+  ```
+    > Le mot de passe est passé directement en ligne de commande.
 
-* Test sécurisé
-```bash
-python strenghtCheck.py --secure-mode
-```
-Le mot de passe est passé de manière masquée.
+* Test sécurisé :
+  ```bash
+  python strenghtCheck.py --secure-mode
+  ```
+    > Le mot de passe est passé de manière masquée.
 
-* Conseils d'amélioration
-```bash
-python strenghtCheck.py --mdp MonMotDePasse123!--advice
-```
-ou
-```bash
-python strenghtCheck.py --secure-mode --advice
-```
+* Conseils d'amélioration :
+  ```bash
+  python strenghtCheck.py --mdp MonMotDePasse123!--advice
+  ```
+    > ou
+  ```bash
+  python strenghtCheck.py --secure-mode --advice
+  ```
+    > Pour montrer les conseils.
 
-* Tests par défaut
-```bash
-python strenghtCheck.py
-```
-Note un ensemble de mot de passe prédéfinie.
+* Tests par défaut :
+  ```bash
+  python strenghtCheck.py
+  ```
+    > Note un ensemble de mot de passe prédéfinie.
 
 ## Limitation
 Ne détecte pas les mots de passe inspirés des mots du dictionnaire.
