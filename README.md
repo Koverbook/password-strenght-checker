@@ -6,8 +6,8 @@
 1. [Description](#description)
 2. [Fonctionnalités](#fonctionnalités)
 3. [Installation](#installation)
-4. [Utilisation](#utilisation)
-5. [Tests](#tests)
+4. [Exemple](#exemple)
+5. [Limitation](#limitation)
 
 ## Description
 
@@ -36,30 +36,25 @@ Il permet également de tester rapidement des mots de passe via une interface en
    cd password-strenght-checker
    ```
 
-## Utilisation
-### Mode 1 : Test rapide via arguments
+## Exemple
 
-Vous pouvez tester un mot de passe en le passant directement comme argument dans la ligne de commande :
+* Test rapide
 ```bash
 python strenghtCheck.py --mdp MonMotDePasse123!
 ```
+Le mot de passe est passé directement en ligne de commande.
 
-### Mode 2 : Saisie sécurisée du mot de passe
-
-Si vous souhaitez que le mot de passe soit saisi de manière sécurisée (masqué), vous pouvez utiliser le mode sécurisé :
+* Test sécurisé
 ```bash
 python strenghtCheck.py --secure-mode
 ```
-Saisir le mot de passe.
-Une fois le mot de passe saisi, l'outil affichera la force du mot de passe sur une échelle de 0 à 8.
+Le mot de passe est passé de manière masquée.
 
-### Mode 3 : Tests par défaut
-
-Si vous ne spécifiez aucun mot de passe, le programme effectuera des tests sur un ensemble de mots de passe pré-définis pour vérifier leur sécurité.
+* Tests par défaut
 ```bash
 python strenghtCheck.py
 ```
+Note un ensemble de mot de passe prédéfinie.
 
-## Test
-
-Tu peux tester plusieurs mots de passe en utilisant les modes décrits ci-dessus, ou en créant un fichier test.py contenant une suite de mots de passe que tu veux analyser (futur).
+## Limitation
+Ne détecte pas les mots de passe inspirés des mots du dictionnaire.
