@@ -85,27 +85,33 @@ GOOD = ["QpR7!xL9@", "e3-+sVnKr*,8V]<~", "A5?5ts0C|f#=LO0I", "H*4#qYvi5b]<q@s=",
 # TEST ____________________________
 
 import argparse
+from getpass import getpass
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description="Mesure la force d'un mot de passe, notée sur 8.")
     parser.add_argument("--mdp", type=str, help="Mot de passe à tester")
-    parser.add_argument("--advice", type=str, help="Conseil d'amélioration")
     parser.add_argument("--secure-mode", action="store_true", help="Saisie sécurisée du mot de passe")
+    parser.add_argument("--advice", action="store_true", help="Conseil d'amélioration")
 
     args = parser.parse_args()
+    mdp = None
 
     if args.mdp:
-        print(f"Score pour '{args.mdp}' : {check(args.mdp)[0]} / 8")
-
-    elif args.advice :
-        print(f"Conseil d'amélioration :\n{check(args.advice)[1]}")
+        mdp = args.mdp
+        print(f" *\n* *\nScore pour {mdp} : {check(mdp)[0]} / 8")
 
     elif args.secure_mode :
-        from getpass import getpass
         mdp = getpass("Entrer le mot de passe en discrétion : ")
-        print(f" *\n* *\nForce du mot de passe :\n{check(mdp)[0]}/8\n *\n* *\nConseil d'amélioration :\n{check(mdp)[1]}")
+        print(f" *\n* *\nScore pour {mdp} : {check(mdp)[0]} / 8")
 
     else :
         print("--EXEMPLE--")
         for code in GOOD :
-            print(f"{code} : {check(code)}/8")
+            print(f"{code} : {check(code)[0]}/8")
+
+    if args.advice and mdp != None :
+        print(f" *\n* *\nConseil d'amélioration :\n{check(mdp)[1]}")
+
+    else :
+        print(f" *\n* *\nPas de conseils sans mot de passe")
