@@ -82,7 +82,7 @@ def corrType(mdp, lag=1):
 
 GOOD = ["QpR7!xL9@", "e3-+sVnKr*,8V]<~", "A5?5ts0C|f#=LO0I", "H*4#qYvi5b]<q@s=", "+/<5480H!{ep5)a~", "1rn!3MWf{%5DFgMk", ")TYD1q]CANDmyE7", "|W<&A`Mw2-e2+jxC", "QBX8Af?0?G/Gg%w<", "|wity<%Uy1u9BL1D", "3ky-b,W~<~[A*WPO", "MdSS@#{}khy1GF^R", "*b9GoSv~l1KLp8gE", ").VkLUF(N_w_P=c1"]
 
-# TEST ____________________________
+# TEST ~~ ~~ ~~ ~~ ~~ ~~ ~~
 
 import argparse
 from getpass import getpass
