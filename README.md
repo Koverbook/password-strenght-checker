@@ -52,7 +52,11 @@ Le mot de passe est passé de manière masquée.
 
 * Conseils d'amélioration
 ```bash
-python strenghtCheck.py --advice
+python strenghtCheck.py --mdp MonMotDePasse123!--advice
+```
+ou
+```bash
+python strenghtCheck.py --secure-mode --advice
 ```
 
 * Tests par défaut
